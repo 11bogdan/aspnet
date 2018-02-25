@@ -1,0 +1,37 @@
+﻿@model CheckDocument.Models.CheckResultModel
+
+<div>
+    <h4>Результат проверки</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DocxFile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DocxFile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReqFile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReqFile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Message)
+        </dt>
+
+        <dd>
+            @foreach(var str in Model.Message)
+            {
+                @str
+                <br>
+            }
+        </dd>
+
+    </dl>
+</div>
+

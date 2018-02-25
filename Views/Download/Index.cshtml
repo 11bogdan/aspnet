@@ -1,0 +1,38 @@
+﻿
+@model IEnumerable<CheckDocument.Models.FileViewModel>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FileName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FileName)
+        </td>
+        <td>
+            @Html.ActionLink("Загрузить", ("File/"+item.FileName.Split('.')[0]))
+        </td>
+    </tr>
+}
+
+    @section scripts {
+       <script>
+
+           function download(file) {
+               var url = "file/" + file;
+               $.ajax(url)
+                   .fail(function () {
+                       alert("Sorry, download failed...");
+                   });
+           }
+
+       </script>
+       
+    }
+
+</table>

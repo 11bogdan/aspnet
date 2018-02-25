@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Проверка";
+}
+
+<h2>Проверка</h2>
+    @using (Html.BeginForm("check", "user", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+
+        <ul class="list-inline">
+            <li class="list-inline-item">
+                Файлы для проверки:<br>
+                @if (ViewBag.FilesToCheck != null && ViewBag.FilesToCheck.Count > 0)
+                {
+                    @Html.ListBox("filesToCheck", new MultiSelectList(ViewBag.FilesToCheck))
+                }
+                else
+                {
+                    @String.Format("No files found")
+                }
+
+            </li>
+            <li class="list-inline-item">
+
+                Файлы с требованиями:<br>
+                @if (ViewBag.ReqFiles != null && ViewBag.ReqFiles.Count > 0)
+                {
+                    @Html.ListBox("reqFiles", new MultiSelectList(ViewBag.ReqFiles))
+                }
+                else
+                {
+                    @String.Format("No files found")
+                }
+
+            </li>
+        </ul>
+        <input type="submit" /> 
+}

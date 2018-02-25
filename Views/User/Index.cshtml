@@ -1,0 +1,26 @@
+﻿
+@model CheckDocument.Models.UserInfoViewModel
+
+
+<div>
+    <h3>Возможные действия</h3>
+    <hr />
+    <table class="table">
+        @foreach (var item in Model.Files)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item)
+                </td>
+                <td>
+                    @Html.ActionLink("Удалить", ("Delete/" + item + "/"))
+                </td>
+            </tr>
+        }
+    </table>
+
+    <table>
+        <tr><td>@Html.ActionLink("Проверить файлы", "Check")</td></tr>
+        <tr><td>@Html.ActionLink("Загрузить файлы", "LoadFile")</td></tr>
+    </table>
+</div>
